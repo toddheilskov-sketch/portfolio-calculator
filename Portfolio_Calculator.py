@@ -6,8 +6,12 @@ import numpy as np
 # Page config
 st.set_page_config(page_title="Portfolio Calculator", page_icon="💰", layout="wide")
 
-# --- Custom CSS Theme ---
-st.markdown("""
+# --- Theme Toggle ---
+st.sidebar.markdown("---")
+theme = st.sidebar.radio("🎨 Theme", ["Light", "Dark"], index=0)
+
+# --- CSS Themes ---
+dark_css = """
 <style>
     .stApp {
         background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
@@ -17,9 +21,7 @@ st.markdown("""
         background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
         border-right: 1px solid rgba(74, 144, 217, 0.3);
     }
-    [data-testid="stSidebar"] * {
-        color: #e0e0e0 !important;
-    }
+    [data-testid="stSidebar"] * { color: #e0e0e0 !important; }
     h1 {
         background: linear-gradient(90deg, #4A90D9, #27AE60);
         -webkit-background-clip: text;
@@ -57,25 +59,81 @@ st.markdown("""
         border-radius: 10px;
         overflow: hidden;
     }
-    hr {
-        border-color: rgba(74, 144, 217, 0.2) !important;
-        margin: 1.5rem 0 !important;
-    }
-    p, .stMarkdown {
-        color: #c0c0d0 !important;
-    }
-    label {
-        color: #a0a0b0 !important;
-        font-size: 0.9rem !important;
-    }
+    hr { border-color: rgba(74, 144, 217, 0.2) !important; margin: 1.5rem 0 !important; }
+    p, .stMarkdown { color: #c0c0d0 !important; }
+    label { color: #a0a0b0 !important; font-size: 0.9rem !important; }
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #1a1a2e; }
     ::-webkit-scrollbar-thumb { background: #4A90D9; border-radius: 3px; }
 </style>
-""", unsafe_allow_html=True)
+"""
+
+light_css = """
+<style>
+    .stApp {
+        background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 50%, #f5f9f5 100%);
+        font-family: 'Segoe UI', sans-serif;
+    }
+    [data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #f0f4ff 0%, #e8f0fe 100%);
+        border-right: 2px solid rgba(26, 115, 232, 0.2);
+    }
+    [data-testid="stSidebar"] * { color: #2c3e50 !important; }
+    h1 {
+        background: linear-gradient(90deg, #1a73e8, #0d9e6e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 2.8rem !important;
+        font-weight: 800 !important;
+        padding-bottom: 0.5rem;
+    }
+    h2, h3 {
+        color: #1a73e8 !important;
+        font-weight: 600 !important;
+        border-bottom: 2px solid rgba(26, 115, 232, 0.2);
+        padding-bottom: 0.3rem;
+    }
+    [data-testid="stMetric"] {
+        background: linear-gradient(135deg, rgba(26, 115, 232, 0.08), rgba(13, 158, 110, 0.06));
+        border: 1px solid rgba(26, 115, 232, 0.25);
+        border-radius: 12px;
+        padding: 1rem 1.2rem !important;
+        box-shadow: 0 2px 12px rgba(26, 115, 232, 0.1);
+    }
+    [data-testid="stMetricLabel"] {
+        color: #5f6368 !important;
+        font-size: 0.85rem !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    [data-testid="stMetricValue"] {
+        color: #1a1a2e !important;
+        font-size: 1.6rem !important;
+        font-weight: 700 !important;
+    }
+    [data-testid="stDataFrame"] {
+        border: 1px solid rgba(26, 115, 232, 0.2);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    hr { border-color: rgba(26, 115, 232, 0.15) !important; margin: 1.5rem 0 !important; }
+    p, .stMarkdown { color: #3c4043 !important; }
+    label { color: #5f6368 !important; font-size: 0.9rem !important; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f0f4ff; }
+    ::-webkit-scrollbar-thumb { background: #1a73e8; border-radius: 3px; }
+</style>
+"""
+
+# Apply selected theme
+st.markdown(dark_css if theme == "Dark" else light_css, unsafe_allow_html=True)
+
+# Subtitle color based on theme
+subtitle_color = "#a0a0b0" if theme == "Dark" else "#5f6368"
 
 st.title("💰 Portfolio Growth Calculator")
-st.markdown('<p style="color:#a0a0b0; font-size:1.1rem; margin-top:-1rem;">Monte Carlo simulation & compound growth analysis</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="color:{subtitle_color}; font-size:1.1rem; margin-top:-1rem;">Monte Carlo simulation & compound growth analysis</p>', unsafe_allow_html=True)
 
 # --- Inputs (sidebar) ---
 st.sidebar.header("Your Inputs")
