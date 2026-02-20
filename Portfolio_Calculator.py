@@ -5,8 +5,77 @@ import numpy as np
 
 # Page config
 st.set_page_config(page_title="Portfolio Calculator", page_icon="💰", layout="wide")
+
+# --- Custom CSS Theme ---
+st.markdown("""
+<style>
+    .stApp {
+        background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+        font-family: 'Segoe UI', sans-serif;
+    }
+    [data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+        border-right: 1px solid rgba(74, 144, 217, 0.3);
+    }
+    [data-testid="stSidebar"] * {
+        color: #e0e0e0 !important;
+    }
+    h1 {
+        background: linear-gradient(90deg, #4A90D9, #27AE60);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 2.8rem !important;
+        font-weight: 800 !important;
+        padding-bottom: 0.5rem;
+    }
+    h2, h3 {
+        color: #4A90D9 !important;
+        font-weight: 600 !important;
+        border-bottom: 1px solid rgba(74, 144, 217, 0.3);
+        padding-bottom: 0.3rem;
+    }
+    [data-testid="stMetric"] {
+        background: linear-gradient(135deg, rgba(74, 144, 217, 0.15), rgba(39, 174, 96, 0.1));
+        border: 1px solid rgba(74, 144, 217, 0.3);
+        border-radius: 12px;
+        padding: 1rem 1.2rem !important;
+        box-shadow: 0 4px 15px rgba(74, 144, 217, 0.1);
+    }
+    [data-testid="stMetricLabel"] {
+        color: #a0a0b0 !important;
+        font-size: 0.85rem !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    [data-testid="stMetricValue"] {
+        color: #ffffff !important;
+        font-size: 1.6rem !important;
+        font-weight: 700 !important;
+    }
+    [data-testid="stDataFrame"] {
+        border: 1px solid rgba(74, 144, 217, 0.2);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    hr {
+        border-color: rgba(74, 144, 217, 0.2) !important;
+        margin: 1.5rem 0 !important;
+    }
+    p, .stMarkdown {
+        color: #c0c0d0 !important;
+    }
+    label {
+        color: #a0a0b0 !important;
+        font-size: 0.9rem !important;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #1a1a2e; }
+    ::-webkit-scrollbar-thumb { background: #4A90D9; border-radius: 3px; }
+</style>
+""", unsafe_allow_html=True)
+
 st.title("💰 Portfolio Growth Calculator")
-st.write("Enter your investment details below to see your projected growth.")
+st.markdown('<p style="color:#a0a0b0; font-size:1.1rem; margin-top:-1rem;">Monte Carlo simulation & compound growth analysis</p>', unsafe_allow_html=True)
 
 # --- Inputs (sidebar) ---
 st.sidebar.header("Your Inputs")
