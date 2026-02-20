@@ -65,6 +65,18 @@ dark_css = """
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #1a1a2e; }
     ::-webkit-scrollbar-thumb { background: #4A90D9; border-radius: 3px; }
+
+    /* --- Mobile Responsive --- */
+    @media (max-width: 768px) {
+        h1 { font-size: 1.8rem !important; }
+        h2, h3 { font-size: 1.1rem !important; }
+        [data-testid="stMetricValue"] { font-size: 1.2rem !important; }
+        [data-testid="stMetricLabel"] { font-size: 0.7rem !important; }
+        [data-testid="stMetric"] { padding: 0.6rem 0.8rem !important; }
+        .block-container { padding: 1rem 0.75rem !important; }
+        [data-testid="stDataFrame"] { font-size: 0.75rem !important; }
+        [data-testid="stSidebar"] { width: 100% !important; }
+    }
 </style>
 """
 
@@ -123,6 +135,18 @@ light_css = """
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #f0f4ff; }
     ::-webkit-scrollbar-thumb { background: #1a73e8; border-radius: 3px; }
+
+    /* --- Mobile Responsive --- */
+    @media (max-width: 768px) {
+        h1 { font-size: 1.8rem !important; }
+        h2, h3 { font-size: 1.1rem !important; }
+        [data-testid="stMetricValue"] { font-size: 1.2rem !important; }
+        [data-testid="stMetricLabel"] { font-size: 0.7rem !important; }
+        [data-testid="stMetric"] { padding: 0.6rem 0.8rem !important; }
+        .block-container { padding: 1rem 0.75rem !important; }
+        [data-testid="stDataFrame"] { font-size: 0.75rem !important; }
+        [data-testid="stSidebar"] { width: 100% !important; }
+    }
 </style>
 """
 
